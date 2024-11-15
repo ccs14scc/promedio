@@ -38,8 +38,12 @@
       <div class="unidad">
         <h3>Promedio</h3>
         <form>
-          <input type="tel" placeholder="Nota 1" [(ngModel)]="nota1" name="nota1" />
-          <input type="tel" placeholder="Nota 2" [(ngModel)]="nota2" name="nota2" />
+          <div>
+            <input type="tel" placeholder="Nota 1" [(ngModel)]="nota1" name="nota1" />
+          </div>
+          <div>
+            <input type="tel" placeholder="Nota 2" [(ngModel)]="nota2" name="nota2" />
+          </div>
           <button type="button" class="btn btn-primary" (click)="activar_promedio2()">Calcular Promedio</button>
         </form>
         <!-- Mostrar el resultado -->

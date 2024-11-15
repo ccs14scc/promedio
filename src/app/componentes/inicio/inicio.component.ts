@@ -9,11 +9,10 @@ import { PruebaService } from '../../servicios/prueba/prueba.service';
 })
 export class InicioComponent {
   formularioForm;
-  // Permitir que las notas puedan ser de tipo 'number' o 'null'
-  nota1: number | null = null; // Ahora puede ser un número o null
-  nota2: number | null = null; // Lo mismo aquí
+
+  nota1: number | null = null;
+  nota2: number | null = null;
   resultadoPromedio: number | null = null;
-  mostrarMensajeError: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private pruebaSrv: PruebaService) {
     this.formularioForm = this.formBuilder.group({
@@ -55,19 +54,45 @@ export class InicioComponent {
   }
 
   activar_promedio() {
-    // Asegurarse de que ambas notas sean válidas y no nulas
-    if (this.nota1 != null && this.nota2 != null) {
-      this.mostrarMensajeError = false; // Ocultar el mensaje de error si ambas notas son válidas
-      this.resultadoPromedio = this.pruebaSrv.promedio(this.nota1, this.nota2);
-      if (this.resultadoPromedio > 7) {
-        console.log("Aprobaste con promedio: " + this.resultadoPromedio);
-      } else if (this.resultadoPromedio === 4) {
-        console.log("Aprobaste con promedio mínimo: " + this.resultadoPromedio);
-      } else {
-        console.log("Reprobaste: " + this.resultadoPromedio);
-      }
-    } else {
-      this.mostrarMensajeError = true; // Mostrar el mensaje de error si alguna de las notas es nula
+    let datos_recibidos_servicio: number;
+    datos_recibidos_servicio = this.pruebaSrv.promedio(1, 6);
+
+    if (datos_recibidos_servicio > 4) {
+      console.log("Aprobaste con promedio: " + datos_recibidos_servicio);
+    } 
+    else if (datos_recibidos_servicio == 4) {
+      console.log("Aprobaste con promedio mínimo: " + datos_recibidos_servicio);
+    } 
+    else {
+      console.log("Reprobaste con promedio: " + datos_recibidos_servicio);
     }
   }
+
+  activar_promedio2() {
+    let num1 = Number(this.nota1);
+    let num2 = Number(this.nota2);
+  
+    // Verificar que las 2 notas sean numeros
+    if (isNaN(num1) || isNaN(num2)) {
+      console.log("Por favor, ingresa numeros validos para las notas.");
+      return; // parar la ejecucion si alguna nota no es correcta
+    }
+  
+    this.resultadoPromedio = this.pruebaSrv.promedio(num1, num2);
+  
+    // Mostrar el mensaje del promedio
+    if (this.resultadoPromedio > 4) {
+      console.log("Aprobaste con promedio: " + this.resultadoPromedio);
+    } 
+    else if (this.resultadoPromedio == 4) {
+      console.log("Aprobaste con promedio mínimo: " + this.resultadoPromedio);
+    } 
+    else {
+      console.log("Reprobaste con promedio: " + this.resultadoPromedio);
+    }
+  }
+  
 }
+
+
+

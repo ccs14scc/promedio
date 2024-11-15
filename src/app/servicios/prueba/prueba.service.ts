@@ -31,9 +31,9 @@ export class PruebaService {
     return total;
   }
 
-  promedio(nota1:number ,nota2:number){
+  promedio(nota1:number ,nota2:number): number {
     let promedio;
-    promedio = (nota1 + nota2)/2;
+    promedio = (nota1 + nota2) / 2;
     return promedio;
   }
 }

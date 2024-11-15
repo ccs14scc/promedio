@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <h1>Formulario Reactivo</h1>
+    <div class="col-md-12">
+      <form [formGroup]="formularioForm" (ngSubmit)="enviarDatos()">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="Ingrese Nombre">
+          <small class="form-text text-muted">Debe ingresar un nombre. No se aceptan símbolos.</small>
+        </div>
+        <div class="form-group">
+          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" formControlName="apellido" id="apellido" placeholder="Ingrese Apellido">
+          <small class="form-text text-muted">Debe ingresar un apellido. No se aceptan símbolos.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+
+    <div class="row">
+      <button (click)="activar_invocable1()" type="submit" class="btn btn-primary">Activar Invocable1</button>
+    </div>
+    <div class="row">
+      <button (click)="activar_invocable2()" type="submit" class="btn btn-danger">Activar Invocable2</button>
+    </div>
+    <div class="row">
+      <button (click)="activar_invocable3()" type="submit" class="btn btn-warning">Activar Invocable3</button>
+    </div>
+    <div class="row">
+      <button (click)="activar_sumar()" type="submit" class="btn btn-warning">Activar Sumar</button>
+    </div>
+    <div class="row">
+      <button (click)="activar_promedio()" type="submit" class="btn btn-warning">Activar Promedio</button>
+    </div>
+
+    <!-- Formulario de Promedio -->
+    <div class="unidades">
+      <div class="unidad">
+        <h3>Promedio</h3>
+        <form>
+          <input type="tel" placeholder="Nota 1" [(ngModel)]="nota1" name="nota1" />
+          <input type="tel" placeholder="Nota 2" [(ngModel)]="nota2" name="nota2" />
+          <button type="button" class="btn btn-primary" (click)="activar_promedio()">Calcular Promedio</button>
+        </form>
+        <!-- Mostrar el resultado -->
+        <div *ngIf="resultadoPromedio !== null">
+          <h4>Resultado: {{ resultadoPromedio }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.unidades {
+    display:flex ;
+    justify-content: left;
+    
+    
+}
+.unidad {
+    text-align: center;
+    font-size: 18px;
+}
+.unidad input[type="tel"] {
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #ccc;
+    text-align: left;
+    margin-bottom: -20px;
+    margin: 10px;
+}
